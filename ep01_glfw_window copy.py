@@ -1,5 +1,4 @@
 import glfw
-#from OpenGL.GL import *
 
 # initializing glfw library
 if not glfw.init():
