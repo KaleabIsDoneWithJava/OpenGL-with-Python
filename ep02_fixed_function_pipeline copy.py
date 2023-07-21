@@ -43,17 +43,24 @@ glClearColor(0, 0.1, 0.1, 1)
 
 # the main application loop
 while not glfw.window_should_close(window):
+    #Poll for keyboard and mouse events, and then call the appropriate functions.
     glfw.poll_events()
 
     glClear(GL_COLOR_BUFFER_BIT)
 
     ct = glfw.get_time()  # returns the elapsed time, since init was called
-    
+
+    #Resets the identity matrix. 
+    # This is important because OpenGL multiplies all positions and rotations through the current matrix. 
+    # If the current matrix is not reset, then the results of the rendering operation will be unpredictable.
     glLoadIdentity()
     
     glScale(abs(sin(ct)), abs(sin(ct)), 1)
     #Rotates 45 degrees on the z-axis
     glRotatef(sin(ct) * 45, 0, 0, 1)
+    #Translates the position of the object(the current matrix) by a specified amount.
+    #Typically used to move objects around in the scene. 
+    # It can also be used to create illusions of depth and perspective.
     glTranslatef(sin(ct), cos(ct), 0)
 
     glDrawArrays(GL_TRIANGLES, 0, 3)
