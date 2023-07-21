@@ -48,14 +48,16 @@ while not glfw.window_should_close(window):
     glClear(GL_COLOR_BUFFER_BIT)
 
     ct = glfw.get_time()  # returns the elapsed time, since init was called
-
+    
     glLoadIdentity()
+    
     glScale(abs(sin(ct)), abs(sin(ct)), 1)
+    #Rotates 45 degrees on the z-axis
     glRotatef(sin(ct) * 45, 0, 0, 1)
     glTranslatef(sin(ct), cos(ct), 0)
 
     glDrawArrays(GL_TRIANGLES, 0, 3)
-
+    #Swaps the front and back buffers to display the rendered content on screen
     glfw.swap_buffers(window)
 
 # terminate glfw, free up allocated resources
